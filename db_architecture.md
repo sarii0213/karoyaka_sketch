@@ -28,7 +28,7 @@ to_let_go_lists {
 integer id PK
 integer category_id FK "手放すモノのカテゴリー"
 integer item_id FK "手放すモノ"
-integer place_id FK "収納している場所"
+integer item_location_id FK "収納している場所"
 integer reason_id FK "手放す理由"
 integer user_id FK  
 }
@@ -37,7 +37,7 @@ done_letting_go_lists {
 integer id PK
 integer category_id FK "手放したモノのカテゴリー"
 integer item_id FK "手放したモノ"
-integer place_id FK "収納していた場所"
+integer item_location_id FK "収納していた場所"
 integer reason_id FK "手放した理由" 
 integer discarding_way_id FK "手放した方法"
 integer user_id FK  
