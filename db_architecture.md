@@ -7,8 +7,6 @@ to_let_go_lists }|--|| item_categories : ""
 done_letting_go_lists }|--|| item_categories : ""
 to_let_go_lists }|--|| items : ""
 done_letting_go_lists }|--|| items : ""
-to_let_go_lists }|--|| item_locations : ""
-done_letting_go_lists }|--|| item_locations : ""
 to_let_go_lists }|--|| letting_go_reasons : ""
 done_letting_go_lists }|--|| letting_go_reasons : ""
 done_letting_go_lists }|--|| letting_go_ways : ""
@@ -28,7 +26,6 @@ to_let_go_lists {
 integer id PK
 integer category_id FK "手放すモノのカテゴリー"
 integer item_id FK "手放すモノ"
-integer item_location_id FK "収納している場所"
 integer reason_id FK "手放す理由"
 integer user_id FK  
 }
@@ -37,7 +34,6 @@ done_letting_go_lists {
 integer id PK
 integer category_id FK "手放したモノのカテゴリー"
 integer item_id FK "手放したモノ"
-integer item_location_id FK "収納していた場所"
 integer reason_id FK "手放した理由" 
 integer discarding_way_id FK "手放した方法"
 integer user_id FK  
@@ -52,11 +48,6 @@ items {
 integer id PK 
 string name 
 integer category_id FK 
-}
-
-item_locations {
-integer id PK 
-string name "収納場所"
 }
 
 letting_go_reasons {
