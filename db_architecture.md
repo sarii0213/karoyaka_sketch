@@ -25,7 +25,7 @@ string encrypted_password
 to_let_go_items {
 integer id PK
 integer category_id FK "手放すモノのカテゴリー"
-string item  "手放すモノ"
+string name "手放すモノ"
 integer reason_id FK "手放す理由"
 integer user_id FK  
 }
@@ -33,7 +33,7 @@ integer user_id FK
 done_letting_go_items {
 integer id PK
 integer category_id FK "手放したモノのカテゴリー"
-string item  "手放したモノ"
+string name "手放したモノ"
 integer reason_id FK "手放した理由" 
 integer letting_go_way_id FK "手放した方法"
 integer user_id FK  
