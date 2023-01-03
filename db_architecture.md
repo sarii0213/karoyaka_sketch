@@ -1,19 +1,19 @@
 ```mermaid
 erDiagram
 
-users ||--o{ to_let_go_lists : ""
-users ||--o{ done_letting_go_lists : ""
-to_let_go_lists }|--|| item_categories : ""
-done_letting_go_lists }|--|| item_categories : ""
-to_let_go_lists }|--|| items : ""
-done_letting_go_lists }|--|| items : ""
-to_let_go_lists }|--|| letting_go_reasons : ""
-done_letting_go_lists }|--|| letting_go_reasons : ""
-done_letting_go_lists }|--|| letting_go_ways : ""
+users ||--o{ to_let_go_items : ""
+users ||--o{ done_letting_go_items : ""
+to_let_go_items }|--|| categories : ""
+done_letting_go_items }|--|| categories : ""
+to_let_go_items }|--|| reasons : ""
+done_letting_go_items }|--|| reasons : ""
+done_letting_go_items }|--|| letting_go_ways : ""
 category_way_optimalities ||--|{ calculation_way_suggestions : ""
 reason_way_optimalities ||--|{ calculation_way_suggestions : ""
-category_way_optimalities }|--|| item_categories : ""
-reason_way_optimalities }|--|| letting_go_reasons : ""
+category_way_optimalities }|--|| categories : ""
+category_way_optimalities }|--|| letting_go_ways : ""
+reason_way_optimalities }|--|| reasons : ""
+reason_way_optimalities }|--|| letting_go_ways : ""
 
 users {
 integer id PK
@@ -22,37 +22,33 @@ string email
 string encrypted_password
 }
 
-to_let_go_lists {
+to_let_go_items {
 integer id PK
 integer category_id FK "手放すモノのカテゴリー"
-integer item_id FK "手放すモノ"
+string item  "手放すモノ"
 integer reason_id FK "手放す理由"
 integer user_id FK  
 }
 
-done_letting_go_lists {
+done_letting_go_items {
 integer id PK
 integer category_id FK "手放したモノのカテゴリー"
-integer item_id FK "手放したモノ"
+string item  "手放したモノ"
 integer reason_id FK "手放した理由" 
-integer discarding_way_id FK "手放した方法"
+integer letting_go_way_id FK "手放した方法"
 integer user_id FK  
 }
 
-item_categories {
+categories {
 integer id PK 
-string name
+string name "手放すもののカテゴリー"
+text description "カテゴリーの具体例"
 }
 
-items {
+reasons {
 integer id PK 
-string name 
-integer category_id FK 
-}
-
-letting_go_reasons {
-integer id PK 
-string content "手放す理由"
+string content "手放す理由の概要"
+text description "理由の詳細説明"
 }
 
 letting_go_ways {
@@ -63,15 +59,15 @@ string url "手放す方法の詳細説明ページへのURL"
 
 category_way_optimalities {
 integer id
-integer category_id 
-integer way_id
+integer category_id FK
+integer letting_go_way_id FK
 integer score "カテゴリーごとの手放す方法の最適度"
 }
 
 reason_way_optimalities {
 integer id
-integer reason_id 
-integer way_id
+integer reason_id FK
+integer letting_go_way_id FK
 integer score "理由ごとの手放す方法の最適度"
 }
 
@@ -87,4 +83,7 @@ integer id PK
 string author
 string content
 }
+
+
+
 ```
