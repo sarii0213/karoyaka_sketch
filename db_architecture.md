@@ -1,19 +1,18 @@
 ```mermaid
 erDiagram
 
-users ||--o{ to_let_go_items : ""
-users ||--o{ done_letting_go_items : ""
-to_let_go_items }|--|| categories : ""
-done_letting_go_items }|--|| categories : ""
-to_let_go_items }|--|| reasons : ""
-done_letting_go_items }|--|| reasons : ""
-done_letting_go_items }|--|| letting_go_ways : ""
+users ||--o{ items : ""
+items }|--|| categories : ""
+items }|--|| reasons : ""
+items }|--|| letting_go_ways : ""
 category_way_optimalities ||--|{ calculation_way_suggestions : ""
 reason_way_optimalities ||--|{ calculation_way_suggestions : ""
 category_way_optimalities }|--|| categories : ""
 category_way_optimalities }|--|| letting_go_ways : ""
 reason_way_optimalities }|--|| reasons : ""
 reason_way_optimalities }|--|| letting_go_ways : ""
+items ||--|| to_let_go_items : "継承"
+items ||--|| done_letting_go_items : "継承"
 
 users {
 integer id PK
@@ -22,10 +21,19 @@ string email
 string encrypted_password
 }
 
+items {
+integer id PK
+integer category_id FK "モノのカテゴリー"
+string name "モノの名前"
+integer reason_id FK "手放す理由" 
+integer letting_go_way_id FK "手放す方法"
+integer user_id FK  
+}
+
 to_let_go_items {
 integer id PK
 integer category_id FK "手放すモノのカテゴリー"
-string name "手放すモノ"
+string name  "手放すモノ"
 integer reason_id FK "手放す理由"
 integer user_id FK  
 }
@@ -47,14 +55,14 @@ text description "カテゴリーの具体例"
 
 reasons {
 integer id PK 
-string content "手放す理由の概要"
+string name "手放す理由の概要"
 text description "理由の詳細説明"
 }
 
 letting_go_ways {
 integer id PK 
-string content "手放す方法"
-string url "手放す方法の詳細説明ページへのURL"
+string name "手放す方法の概要"
+string description "手放す方法の詳細説明"
 }
 
 category_way_optimalities {
@@ -83,7 +91,4 @@ integer id PK
 string author
 string content
 }
-
-
-
 ```
