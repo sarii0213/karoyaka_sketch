@@ -35,6 +35,7 @@ integer id PK
 integer category_id FK "手放すモノのカテゴリー"
 string name  "手放すモノ"
 integer reason_id FK "手放す理由"
+integer letting_go_way_id FK "NULL"
 integer user_id FK  
 }
 
