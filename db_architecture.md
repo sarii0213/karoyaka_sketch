@@ -23,6 +23,7 @@ string encrypted_password
 
 items {
 integer id PK
+string type "ToLetGoItem / DoneLettingGoItem"
 integer category_id FK "モノのカテゴリー"
 string name "モノの名前"
 integer reason_id FK "手放す理由" 
@@ -32,6 +33,7 @@ integer user_id FK
 
 to_let_go_items {
 integer id PK
+string type "ToLetGoItem"
 integer category_id FK "手放すモノのカテゴリー"
 string name  "手放すモノ"
 integer reason_id FK "手放す理由"
@@ -41,6 +43,7 @@ integer user_id FK
 
 done_letting_go_items {
 integer id PK
+string type "DoneLettingGoItem"
 integer category_id FK "手放したモノのカテゴリー"
 string name "手放したモノ"
 integer reason_id FK "手放した理由" 
