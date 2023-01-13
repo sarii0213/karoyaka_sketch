@@ -5,14 +5,19 @@ users ||--o{ items : ""
 items }|--|| categories : ""
 items }|--|| reasons : ""
 items }|--|| letting_go_ways : ""
+
 category_way_optimalities ||--|{ calculation_way_suggestions : ""
 reason_way_optimalities ||--|{ calculation_way_suggestions : ""
 category_way_optimalities }|--|| categories : ""
 category_way_optimalities }|--|| letting_go_ways : ""
 reason_way_optimalities }|--|| reasons : ""
 reason_way_optimalities }|--|| letting_go_ways : ""
+
 items ||--|| to_let_go_items : "継承"
 items ||--|| done_letting_go_items : "継承"
+
+quotes ||--|{ favorites : ""
+users ||--|{ favorites : ""
 
 users {
 integer id PK
@@ -55,18 +60,21 @@ categories {
 integer id PK 
 string name "手放すもののカテゴリー"
 text description "カテゴリーの具体例"
+boolean selectable "選択肢に表示するかのフラグ"
 }
 
 reasons {
 integer id PK 
 string name "手放す理由の概要"
 text description "理由の詳細説明"
+boolean selectable "選択肢に表示するかのフラグ"
 }
 
 letting_go_ways {
 integer id PK 
 string name "手放す方法の概要"
 string description "手放す方法の詳細説明"
+boolean selectable "選択肢に表示するかのフラグ"
 }
 
 category_way_optimalities {
@@ -93,6 +101,13 @@ integer score "手放す方法の総合最適度"
 quotes {
 integer id PK 
 string author
-string content
+string content "名言の本文"
+text description "名言の詳細説明"
+}
+
+favorites {
+integer id PK 
+integer user_id FK
+integer quote_id FK
 }
 ```
