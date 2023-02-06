@@ -6,8 +6,6 @@ items }|--|| categories : ""
 items }|--|| reasons : ""
 items }|--|| letting_go_ways : ""
 
-category_way_optimalities ||--|{ calculation_way_suggestions : ""
-reason_way_optimalities ||--|{ calculation_way_suggestions : ""
 category_way_optimalities }|--|| categories : ""
 category_way_optimalities }|--|| letting_go_ways : ""
 reason_way_optimalities }|--|| reasons : ""
@@ -89,13 +87,6 @@ integer id
 integer reason_id FK
 integer letting_go_way_id FK
 integer score "理由ごとの手放す方法の最適度"
-}
-
-calculation_way_suggestions {
-integer id PK
-integer category_way_compatibility_id FK 
-integer reason_way_compatibility_id FK 
-integer score "手放す方法の総合最適度"
 }
 
 quotes {
